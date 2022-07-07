@@ -1,0 +1,52 @@
+<div class="container" scrollbar-measurer>
+  <table class="datagrid">
+    <tbody>
+      <tr>
+        <td>
+
+          <table class="datagrid">
+            <thead>
+              <tr>
+                <th scope="col">Profesor</th>
+                <th scope="col">Detalle</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let profesor of profesores ">
+
+                <td>{{ profesor.nombre }} </td>
+                <td>
+                  <button class="button-10" (click)="buscarAsignaturas(profesor.id);">Ver</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table class="datagrid" scrollbar-measurer *ngIf="asignaturas.length>0 ">
+            <thead>
+              <tr>
+                <th scope="col">Asignatura</th>
+                <th scope="col">Curso</th>
+                <th scope="col">Estudiantes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let asignatura of asignaturas ">
+                <td>{{ asignatura.nombre }} </td>
+                <td>{{ asignatura.curso.grado }}{{ asignatura.curso.salon }}  </td>
+                <td>
+                  <table>
+                    <tbody style="height: 99% !important;">
+                      <tr *ngFor="let estudiante of asignatura.estudiantes">
+                        <td>{{ estudiante.nombre }} </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+      </tr>
+    </tbody>
+  </table>
+</div>
